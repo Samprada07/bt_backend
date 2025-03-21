@@ -1,0 +1,65 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.pyc
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# IDE/editor-specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# Test coverage and build
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.xml
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebooks checkpoints (if any)
+.ipynb_checkpoints/
+
+# Environment variables / secrets
+.env
+.env.*
+
+# FastAPI static/media/uploads (if user uploads files)
+uploads/
+media/
+static/
+
+# Node-related (if frontend in same repo)
+node_modules/
+package-lock.json
+
+# PyCharm specific
+*.iml
+
+# SSH keys or sensitive files (if mistakenly placed)
+*.pem
+*.key
+*.crt
+id_rsa
+id_rsa.pub
