@@ -36,7 +36,7 @@ app.mount("/uploads", StaticFiles(directory=UPLOAD_FOLDER), name="uploads")
 
 def load_models():
     """Loads and stores both MRI validator and tumor classifier models."""
-    if not hasattr(app.state, "mri_validator_model"):
+    if not hasattr(app.state, "brainMri_validator"):
         validator_path = Path(settings.MRI_VALIDATOR_MODEL_PATH).resolve()
         if validator_path.with_suffix(".keras").exists():
             validator_path = validator_path.with_suffix(".keras")
@@ -44,10 +44,10 @@ def load_models():
             validator_path = validator_path.with_suffix(".h5")
         else:
             raise ValueError(f"Validator model not found: {validator_path}")
-        app.state.mri_validator_model = tf.keras.models.load_model(str(validator_path))
+        app.state.brainMri_validator = tf.keras.models.load_model(str(validator_path))
         print("MRI validator model loaded.")
 
-    if not hasattr(app.state, "tumor_classifier_model"):
+    if not hasattr(app.state, "brain_tumor_model"):
         classifier_path = Path(settings.TUMOR_CLASSIFIER_MODEL_PATH).resolve()
         if classifier_path.with_suffix(".keras").exists():
             classifier_path = classifier_path.with_suffix(".keras")
@@ -55,7 +55,7 @@ def load_models():
             classifier_path = classifier_path.with_suffix(".h5")
         else:
             raise ValueError(f"Tumor classifier model not found: {classifier_path}")
-        app.state.tumor_classifier_model = tf.keras.models.load_model(str(classifier_path))
+        app.state.brain_tumor_model = tf.keras.models.load_model(str(classifier_path))
         print("Tumor classifier model loaded.")
 
 

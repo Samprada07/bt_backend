@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings
-from typing import List
+from typing import ClassVar, List
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -21,8 +21,8 @@ class Settings(BaseSettings):
     ALLOWED_EXTENSIONS: List[str] = ["png", "jpg", "jpeg", "dicom"]
     
     # Model settings
-    MRI_VALIDATOR_MODEL_PATH = "brainMri_validator"
-    TUMOR_CLASSIFIER_MODEL_PATH = "brain_tumor_model"
+    MRI_VALIDATOR_MODEL_PATH: str = "brainMri_validator"
+    TUMOR_CLASSIFIER_MODEL_PATH: str ="brain_tumor_model"
     
     # CORS settings
     cors_origins: List[str] = ["http://localhost:3000"]
@@ -30,6 +30,8 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = False  # This allows case-insensitive field matching
+        
+
 
 # Create global settings instance
 settings = Settings()
@@ -44,3 +46,4 @@ TEMP_UPLOAD_DIR = settings.TEMP_UPLOAD_DIR
 MAX_FILE_SIZE = settings.MAX_FILE_SIZE
 ALLOWED_EXTENSIONS = settings.ALLOWED_EXTENSIONS
 CORS_ORIGINS = settings.cors_origins
+
